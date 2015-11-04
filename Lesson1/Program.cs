@@ -7,6 +7,27 @@ using Common;
 
 namespace Lesson1
 {
+
+    //Sequence is not a collection
+    //Compose sequences and ask for the collection when you need it
+    //Usage - conditional statements in where clause(critical when datastore is not local or not in memory)
+
+    //Card deck collection vs enumerable(generates next item only when you ask for that)
+
+    //Big data/infinite sequence that never ends(don’t need the whole thing)
+
+    //Enumerator pattern MoveNext/Current
+
+    //can’t have yield return and return in the same method
+
+    //yield by it self is not a keyword(contextual keyword)
+
+    //yield return yield
+
+    //Stream analogy
+    //Streaming video vs rendering html
+
+
     class Program
     {
         public static IEnumerable<ICaseRunner> GatherCases()
@@ -21,8 +42,8 @@ namespace Lesson1
             //yield return new Case8();
             yield return new Case9();
             yield return new Case10();
-           
-        }      
+
+        }
 
         static void Main(string[] args)
         {

@@ -20,17 +20,21 @@ namespace Lesson2.C4
     class Case4 : ICaseRunner
     {
         public void Run()
-        {
-            var sequence = GenerateNumbersSequence();
+        {         
+            GenerateNumbersSequence()
+                .Select(x =>
+                {
+                    return x.ToString();
+                }).Where(x => x.Length == 1)
+                .Print();
 
-            //sequence = sequence.MySelect().Where(x=>x.Length ==1);
 
-            var sequence2 = sequence.Select(x =>
-            {
-                return x.ToString();
-            }).Where(x => x.Length == 1);
-
-            sequence2.Print();
+            GenerateSequence()
+                .Select(x =>
+                {
+                    return x;
+                }).Where(x => x.Length == 1)
+                .Print();
         }
 
 
@@ -38,7 +42,7 @@ namespace Lesson2.C4
         static IEnumerable<string> GenerateSequence()
         {
             int i = 0;
-            while (i++ < Int32.MaxValue)
+            while (i++ < int.MaxValue)
             {
                 yield return i.ToString();
             }
@@ -47,7 +51,7 @@ namespace Lesson2.C4
         static IEnumerable<int> GenerateNumbersSequence()
         {
             int i = 0;
-            while (i++ < Int32.MaxValue)
+            while (i++ < 1000)
             {
                 yield return i;
             }

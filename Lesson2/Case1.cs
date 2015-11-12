@@ -18,17 +18,13 @@ namespace Lesson2
     {
         public void Run()
         {
-            var sequnce = GenerateSequence();
-
-            sequnce = sequnce.MyWhere(x => x.Length == 1);
-
+            GenerateSequence()
+                .MyWhere(x => x.Length == 1)
+                .Print();
 
             //MyWhere nongeneric first, generic later
             //GenerateNumbers see compiler error
-            //GenerateNumbersSequence().MyWhere(x => x > 10);
-
-
-            sequnce.Print();
+            //GenerateNumbersSequence().MyWhere(x => x > 1)
         }
 
 

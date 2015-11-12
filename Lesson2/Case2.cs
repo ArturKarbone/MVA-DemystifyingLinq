@@ -25,20 +25,19 @@ namespace Lesson2.C2
     {
         public void Run()
         {
-            var sequnce = GenerateSequence();
+            GenerateSequence()
+                .MyWhere(x => x.Length == 1)
+                .Print();
 
-            sequnce = sequnce.MyWhere(x => x.Length == 1);
-            GenerateNumbersSequence().MyWhere(x => x > 10);
-
-            sequnce.Print();
+            GenerateNumbersSequence()
+                .MyWhere(x => x < 10)
+                .Print();            
         }
-
-
-        //static List<string> GenerateSequence()
+       
         static IEnumerable<string> GenerateSequence()
         {
             int i = 0;
-            while (i++ < Int32.MaxValue)
+            while (i++ < 10000000)
             {
                 yield return i.ToString();
             }

@@ -20,25 +20,11 @@ namespace Lesson2.C3
     {
         public void Run()
         {
-            var sequence = GenerateNumbersSequence();
-
-            //sequence = sequence.MySelect().Where(x=>x.Length ==1);
-
-            var sequence2 = sequence.MySelect().Where(x => x.Length == 1);
-
-            sequence2.Print();
-        }
-
-
-        //static List<string> GenerateSequence()
-        static IEnumerable<string> GenerateSequence()
-        {
-            int i = 0;
-            while (i++ < Int32.MaxValue)
-            {
-                yield return i.ToString();
-            }
-        }
+            GenerateNumbersSequence()
+                .MySelect()
+                .Where(x => x.Length == 1)
+                .Print();
+        }       
 
         static IEnumerable<int> GenerateNumbersSequence()
         {

@@ -9,7 +9,7 @@ namespace Lesson3
 {
 
 
-//Don’t do sequence.count != 0, cause it has to iterate trough the entire collection first
+//Don’t do sequence.count != 0, cause it has to iterate trough the entire collection first !
 
 //All(predicate) efficient. fall out as soon it finds an item which does not match
 

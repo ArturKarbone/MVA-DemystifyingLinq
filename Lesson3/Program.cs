@@ -24,9 +24,9 @@ namespace Lesson3
         public static IEnumerable<ICaseRunner> GatherCases()
         {
             //yield return new Case1();
-            //yield return new Case2();
+            yield return new Case2();
            //yield return new Case3();
-            yield return new Case4();
+            //yield return new Case4();
             //yield return new Case5();
 
 

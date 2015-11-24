@@ -39,7 +39,8 @@ namespace Lesson5
             //yield return new Case2();
             //yield return new Case3();
             //yield return new Case4();
-            yield return new Case5();
+            //yield return new Case5();
+            yield return new Case6();
 
 
         }

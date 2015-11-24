@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Lesson5
 {
-    class Case5 : ICaseRunner
+    class Case6 : ICaseRunner
     {
         class Project
         {
@@ -103,16 +103,60 @@ namespace Lesson5
 
         public void Run()
         {
-            GroupJoinEmployees(GetEmployees());
-            GroupJoinTasksProjects();
+            SelectManyExample1();
+            SelectManyExample2();
+            SelectManyExample3();
+            SelectManyExample4();
+        }
 
-            GroupByWithCollection(GetEmployees());
+        public void SelectManyExample1()
+        {
+            var odds = new int[] { 1, 3, 5, 9 };
+            var evens = new int[] { 2, 4, 6, 8 };
 
 
-            var results =
-                GetEmployees()
-               .GroupBy(e => e.Department)
-               .Select(d => new { Department = d.Key, Size = d.Count() });
+            var query = from o in odds
+                        from e in evens
+                        select new { o, e, Sum = o + e };
+        }
+
+        private static void SelectManyExample2()
+        {
+            int[] odds = { 1, 3, 5, 7 };
+            int[] evens = { 2, 4, 6, 8 };
+            var values = odds.SelectMany(oddNumber => evens,
+                (oddNumber, evenNumber) =>
+                new { oddNumber, evenNumber, Sum = oddNumber + evenNumber });
+        }
+
+
+        private static void SelectManyExample3()
+        {
+            int[] odds = { 1, 3, 5, 7 };
+            int[] evens = { 2, 4, 6, 8 };
+            var values = from oddNumber in odds
+                         from evenNumber in evens
+                         where oddNumber > evenNumber
+                         select new { oddNumber, evenNumber, Sum = oddNumber + evenNumber };
+        }
+
+
+        private static void SelectManyExample4()
+        {
+
+            int[] odds = { 1, 3, 5, 7 };
+            int[] evens = { 2, 4, 6, 8 };
+            var values = odds.SelectMany(oddNumber => evens,
+                (oddNumber, evenNumber) =>
+                new { oddNumber, evenNumber })
+                .Where(pair => pair.oddNumber > pair.evenNumber).
+                Select(pair => new {
+                    pair.oddNumber,
+                    pair.evenNumber,
+                    Sum = pair.oddNumber + pair.evenNumber
+                });
+
+
         }
     }
 
